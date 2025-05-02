@@ -8,14 +8,9 @@ spec:
   path: ./k8s
   prune: true
   sourceRef:
-    kind: GitRepository
+    kind: OCIRepository
     name: flux-oci-sample
   targetNamespace: gne-test
   images:
   - name: ghcr.io/shinhancard/flux-oci-sample
     newName: ghcr.io/shinhancard/flux-oci-sample
-    policy:
-      imageRepositoryRef:
-        name: flux-oci-sample
-      imagePolicy:
-        name: flux-oci-sample

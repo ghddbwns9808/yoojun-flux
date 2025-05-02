@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
+  name: flux-oci-sample
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  url: oci://ghcr.io/shinhancard/flux-oci-sample
+  ref:
+    tag: latest
