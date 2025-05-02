@@ -5,12 +5,9 @@ metadata:
   namespace: gne-test
 spec:
   interval: 10m0s
-  path: ./k8s
+  path: .
   prune: true
   sourceRef:
     kind: OCIRepository
     name: flux-oci-sample
   targetNamespace: gne-test
-  images:
-  - name: ghcr.io/shinhancard/flux-oci-sample
-    newName: ghcr.io/shinhancard/flux-oci-sample
