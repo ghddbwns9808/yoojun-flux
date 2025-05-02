@@ -25,16 +25,16 @@ jobs:
           curl -LO https://github.com/oras-project/oras/releases/download/v1.1.0/oras_1.1.0_linux_amd64.tar.gz
           mkdir -p oras-install/
           tar -zxf oras_1.1.0_linux_amd64.tar.gz -C oras-install/
-          sudo mv oras-install/oras /usr/local/bin/oras
-          oras version
+          mv oras-install/oras ./oras
 
       - name: Login to GHCR for ORAS
         run: |
           echo "${{ secrets.GITHUB_TOKEN }}" | oras login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Push Kustomize YAMLs to GHCR
+      - name: Push Kustomize YAMLs with ORAS
         run: |
-          oras push ghcr.io/shinhancard/flux-oci-sample:kustomize-latest \
+          ./oras login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
+          ./oras push ghcr.io/shinhancard/flux-oci-sample:kustomize-latest \
             --artifact-type application/vnd.cncf.flux.kustomize.layer.v1 \
             --media-type application/vnd.yaml \
             ./k8s/
