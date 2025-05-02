@@ -2,9 +2,9 @@ apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: OCIRepository
 metadata:
   name: flux-oci-sample
-  namespace: flux-system
+  namespace: gne-test
 spec:
-  interval: 1m0s
+  interval: 1m
   url: oci://ghcr.io/shinhancard/flux-oci-sample
   ref:
-    tag: latest
+    tag: kustomize-latest

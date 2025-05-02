@@ -1,0 +1,40 @@
+name: Deploy Flux YAML to OCI
+
+on:
+  workflow_run:
+    workflows: [ "Build and Push App Image" ]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Update image tag in deployment.yaml
+        run: |
+          sed -i "s|image: .*|image: ghcr.io/shinhancard/flux-oci-sample:image-${{ github.sha }}|" k8s/deployment.yaml
+
+      - name: Install ORAS CLI
+        run: |
+          curl -LO https://github.com/oras-project/oras/releases/download/v1.1.0/oras_1.1.0_linux_amd64.tar.gz
+          mkdir -p oras-install/
+          tar -zxf oras_1.1.0_linux_amd64.tar.gz -C oras-install/
+          sudo mv oras-install/oras /usr/local/bin/
+          rm -rf oras_1.1.0_linux_amd64.tar.gz oras-install/
+
+      - name: Login to GHCR for ORAS
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | oras login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Push Kustomize YAMLs to GHCR
+        run: |
+          oras push ghcr.io/shinhancard/flux-oci-sample:kustomize-latest \
+            --artifact-type application/vnd.cncf.flux.kustomize.layer.v1 \
+            --media-type application/vnd.yaml \
+            ./k8s/

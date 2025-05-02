@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: flux-oci-sample
-        image: ghcr.io/shinhancard/flux-oci-sample:latest
+        image: ghcr.io/shinhancard/flux-oci-sample:image-REPLACEME
         ports:
         - containerPort: 8080
         resources:
