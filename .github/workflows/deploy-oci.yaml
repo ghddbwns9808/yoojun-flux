@@ -35,5 +35,6 @@ jobs:
         run: |
           ./oras push ghcr.io/shinhancard/flux-oci-sample:kustomize-latest \
             --artifact-type application/vnd.cncf.flux.kustomize.layer.v1 \
-            --media-type application/vnd.yaml \
-            ./k8s/
+            ./k8s/deployment.yaml:application/vnd.yaml \
+            ./k8s/service.yaml:application/vnd.yaml \
+            ./k8s/kustomization.yaml:application/vnd.yaml
