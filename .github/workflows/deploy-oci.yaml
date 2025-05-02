@@ -20,13 +20,13 @@ jobs:
         run: |
           sed -i "s|image: .*|image: ghcr.io/shinhancard/flux-oci-sample:image-${{ github.sha }}|" k8s/deployment.yaml
 
-      - name: Install ORAS CLI
+      - name: Install ORAS v1.1.0
         run: |
           curl -LO https://github.com/oras-project/oras/releases/download/v1.1.0/oras_1.1.0_linux_amd64.tar.gz
           mkdir -p oras-install/
           tar -zxf oras_1.1.0_linux_amd64.tar.gz -C oras-install/
-          sudo mv oras-install/oras /usr/local/bin/
-          rm -rf oras_1.1.0_linux_amd64.tar.gz oras-install/
+          sudo mv oras-install/oras /usr/local/bin/oras
+          oras version
 
       - name: Login to GHCR for ORAS
         run: |
