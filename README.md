@@ -1,5 +1,12 @@
 # Flux OCI Sample
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![Build and Push App Image](https://github.com/shinhancard/flux-oci-sample/actions/workflows/build-app.yaml/badge.svg)](https://github.com/shinhancard/flux-oci-sample/actions/workflows/build-app.yaml)
+[![Deploy Flux YAML to OCI](https://github.com/shinhancard/flux-oci-sample/actions/workflows/deploy-oci.yaml/badge.svg)](https://github.com/shinhancard/flux-oci-sample/actions/workflows/deploy-oci.yaml)
+[![Java](https://img.shields.io/badge/Java-21-orange.svg)](https://openjdk.java.net/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4.5-brightgreen.svg)](https://spring.io/projects/spring-boot)
+[![Docker Image Size](https://img.shields.io/docker/image-size/ghcr.io/shinhancard/flux-oci-sample/latest)](https://github.com/shinhancard/flux-oci-sample/pkgs/container/flux-oci-sample)
+
 This repository demonstrates how to use Flux CD with OCI artifacts stored in GitHub Container Registry (GHCR) for Kubernetes deployments.
 
 ## Overview
