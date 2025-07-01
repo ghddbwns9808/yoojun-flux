@@ -34,7 +34,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.YOOJUN_SECRET }}
 
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v4
@@ -42,4 +42,4 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/shinhancard/flux-oci-sample:image-${{ github.sha }}
+            ghcr.io/ghddbwns9808/flux-template:image-${{ github.sha }}

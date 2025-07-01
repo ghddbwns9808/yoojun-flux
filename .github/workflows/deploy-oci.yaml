@@ -18,7 +18,7 @@ jobs:
 
       - name: Update image tag in deployment.yaml
         run: |
-          sed -i "s|image: .*|image: ghcr.io/shinhancard/flux-oci-sample:image-${{ github.sha }}|" k8s/deployment.yaml
+          sed -i "s|image: .*|image: ghcr.io/ghddbwns9808/flux-template:image-${{ github.sha }}|" k8s/deployment.yaml
 
       - name: Install ORAS v1.1.0
         run: |
@@ -33,11 +33,11 @@ jobs:
 
       - name: Login to GHCR for ORAS
         run: |
-          echo "${{ secrets.GITHUB_TOKEN }}" | ./oras login ghcr.io -u ${{ github.actor }} --password-stdin
+          echo "${{ secrets.YOOJUN_SECRET }}" | ./oras login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Push to GHCR via ORAS
         run: |
-          ./oras push ghcr.io/shinhancard/flux-oci-sample:kustomize-latest \
+          ./oras push ghcr.io/ghddbwns9808/flux-template:kustomize-latest \
             --artifact-type application/vnd.cncf.flux.kustomize.layer.v1 \
             flux-kustomize.tar.gz:application/gzip
 

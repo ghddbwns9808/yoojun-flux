@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flux-oci-sample
-  namespace: gne-test
+  name: yoojun-deploy
+  namespace: yoojun
   labels:
-    app: flux-oci-sample
+    app: yoojun
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: flux-oci-sample
+      app: yoojun
   template:
     metadata:
       labels:
-        app: flux-oci-sample
+        app: yoojun
     spec:
       containers:
-      - name: flux-oci-sample
-        image: ghcr.io/shinhancard/flux-oci-sample:image-REPLACEME
+      - name: yoojun
+        image: ghcr.io/ghddbwns9808/flux-template:image-REPLACEME
         ports:
         - containerPort: 8080
         resources:
