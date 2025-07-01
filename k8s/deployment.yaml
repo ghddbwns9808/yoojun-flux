@@ -15,6 +15,8 @@ spec:
       labels:
         app: yoojun
     spec:
+      imagePullSecrets:
+       - name: ghcr-login-secret
       containers:
       - name: yoojun
         image: ghcr.io/ghddbwns9808/flux-template:image-REPLACEME
