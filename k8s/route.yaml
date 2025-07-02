@@ -1,0 +1,19 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: yoojun-route
+  namespace: yoojun
+  labels:
+    app: yoojun
+spec:
+  host: yoojun.okd1.shinhancard.rd
+  to:
+    kind: Service
+    name: yoojun-service
+    weight: 100
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None
