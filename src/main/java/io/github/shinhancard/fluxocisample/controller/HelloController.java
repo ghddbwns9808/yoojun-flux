@@ -9,7 +9,7 @@ public class HelloController {
 
     @GetMapping("/")
     public String hello() {
-        return "this is flux test!";
+        return "hello, this is flux test!";
     }
 
     @GetMapping("/callcounter")
